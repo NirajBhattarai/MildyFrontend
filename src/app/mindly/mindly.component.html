@@ -1,0 +1,77 @@
+<div class="text-center p_100">
+    <div class="container">
+      <h2>Add a new portfolio item</h2>
+      <form [formGroup]="inputForm">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Choose cryptocurrency</th>
+            <th>Amount</th>
+            <th>Date of purchase</th>
+            <th>Wallet location</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <select class="form-control" formControlName="cryptocurrency">
+                <option value="Bitcoin">Bitcoin</option>
+                <option value="Ethereum">Ethereum</option>
+                <option value="Ripple">Ripple</option>
+              </select>
+            </td>
+            <td>
+              <label for="amount"></label>
+              <input type="text" class="form-control" id="amount" name="amount"  validationMsgId="amount" formControlName="amount"/>
+  
+            </td>
+            <td>
+              <label for="dateOfPurchase"></label>
+              <input type="date" class="form-control" formControlName="dateOfPurchase"
+                     id="dateOfPurchase" name="dateOfPurchase"></td>
+            <td>
+              <label for="walletLocation"></label>
+              <input class="form-control" id="walletLocation" name="walletLocation"  validationMsgId="walletLocation" formControlName="walletLocation"
+              />
+  
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button (click)="onSubmit(); " name="Save" value="Save" class="color-prim ui-button-raised"></button>
+      </form>
+    </div>
+  </div>
+  <div class="text-center p_100">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <div class="text-center validationError">
+      </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th class="text-center">Cryptocurrency</th>
+          <th class="text-center">Amount</th>
+          <th class="text-center">Date of purchase</th>
+          <th class="text-center">Wallet location</th>
+          <th class="text-center">Current market value (EUR)</th>
+          <th class="text-center">Option</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let portfolioItem of portfolio">
+          <td>{{portfolioItem.cryptocurrency}}</td>
+          <td>{{portfolioItem.amount}}</td>
+          <td>{{portfolioItem.dateOfPurchase| date : "dd.MM.yy"}}</td>
+          <td>{{portfolioItem.walletLocation}}</td>
+          <td>{{portfolioItem.currentMarketValue}}
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  
